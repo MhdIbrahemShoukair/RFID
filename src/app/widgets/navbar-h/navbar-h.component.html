@@ -1,0 +1,13 @@
+<nav>
+    <ul>
+        <li class="icon">
+            <a [routerLink]="'dashboard'">
+                <img src="./assets/icons/mec_logo.png" />
+            </a>
+        </li>
+        <li *ngFor="let route of routes">
+            <a [routerLink]="[route.path]" [routerLinkActive]="['active']">{{ route.name }}</a>
+        </li>
+    </ul>
+
+</nav>
