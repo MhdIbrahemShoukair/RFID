@@ -1,0 +1,12 @@
+{
+    "table": {
+        "TITLE": "مرحبا",
+        "DESCRIPTION": "Here comes some text..."
+    },
+    "nav": {
+        "dashboard": "لوحة التحكم",
+        "devices": "إدارة الأجهزة",
+        "inventory": "إدارة المخزون",
+        "login": "Loلبلgin"
+    }
+}

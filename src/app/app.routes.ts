@@ -10,14 +10,14 @@ import { AuthGuard } from './auth/auth.guard';
 import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent, data: { name: 'Login', order: 10 } },
+    { path: 'login', component: LoginComponent, data: { name: 'login', order: 10 } },
     {
         path: 'dashboard', loadComponent: () => import('./dashboard/dashboard.component').then((m) => m.DashboardComponent),
-        data: { name: 'Dashboard', order: 1 },
+        data: { name: 'dashboard', order: 1 },
         canActivate: [AuthGuard]
     },
     {
-        path: 'devices', component: DeviceManagmentComponent, data: { name: 'Devices', order: 2 },
+        path: 'devices', component: DeviceManagmentComponent, data: { name: 'devices', order: 2 },
         children: [
             {
                 path: 'list',
@@ -38,7 +38,7 @@ export const routes: Routes = [
 
     },
     {
-        path: 'Inventory', component: InventoryManagementComponent, data: { name: 'Inventory', order: 3 },
+        path: 'Inventory', component: InventoryManagementComponent, data: { name: 'inventory', order: 3 },
         children: [
             {
                 path: 'list',

@@ -1,0 +1,12 @@
+{
+    "table": {
+        "TITLE": "Hello World!",
+        "DESCRIPTION": "Here comes some text..."
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "devices": "Devices",
+        "inventory": "Inventory",
+        "login": "Login"
+    }
+}
