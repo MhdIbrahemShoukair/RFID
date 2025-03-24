@@ -8,13 +8,14 @@ import { DeviceDetailsComponent } from './device-managment/device-details/device
 import { DeviceRFIDDataComponent } from './device-managment/device-rfiddata/device-rfiddata.component';
 import { AuthGuard } from './auth/auth.guard';
 import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent, data: { name: 'login', order: 10 } },
     {
         path: 'dashboard', loadComponent: () => import('./dashboard/dashboard.component').then((m) => m.DashboardComponent),
         data: { name: 'dashboard', order: 1 },
-        canActivate: [AuthGuard]
+        canActivate: [MsalGuard]
     },
     {
         path: 'devices', component: DeviceManagmentComponent, data: { name: 'devices', order: 2 },
