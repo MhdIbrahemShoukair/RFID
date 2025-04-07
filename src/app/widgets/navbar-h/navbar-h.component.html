@@ -8,6 +8,14 @@
         <li *ngFor="let route of routes">
             <a [routerLink]="[route.path]" [routerLinkActive]="['active']">{{ 'nav.'+route.name | translate}}</a>
         </li>
+        <li>
+            <a *ngIf="lang=='ar'" (click)="useLanguage('en')">English</a>
+            <a *ngIf="lang=='en'" (click)="useLanguage('ar')">عربي</a>
+        </li>
+
+        <li class="profile">
+            profile
+        </li>
     </ul>
 
 </nav>

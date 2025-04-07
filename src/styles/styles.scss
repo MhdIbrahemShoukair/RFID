@@ -1,9 +1,12 @@
+@use "variables";
 @use '@angular/material' as mat;
+@use "typography";
+@use "mixin";
 
 html {
     @include mat.theme((color: mat.$violet-palette,
-            typography: (plain-family: Roboto,
-                brand-family: Open Sans,
+            typography: (plain-family: Cairo,
+                brand-family: Cairo,
                 bold-weight: 900,
                 medium-weight: 500,
                 regular-weight: 300,
@@ -12,9 +15,7 @@ html {
         ));
 }
 
-@import url('./variables.scss');
-@import url('./typography.scss');
-@import url('./mixin.scss');
+
 
 
 /* advanced-responsive-layout.component.css */
@@ -22,54 +23,14 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px 70px;
 }
 
 .item {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-    .item {
-        margin: 5px;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .item {
-        margin: 2px;
-        padding: 5px;
-    }
-}
-
-@media (max-width: 768px) and (orientation: portrait) {
-    .item {
-        margin: 10px;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 768px) and (orientation: landscape) {
-    .item {
-        margin: 5px;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) and (orientation: portrait) {
-    .item {
-        margin: 5px;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) and (orientation: landscape) {
-    .item {
-        margin: 2px;
-        padding: 5px;
-    }
+    // margin: 10px;
+    // padding: 20px;
+    // border: 1px solid #ccc;
+    // border-radius: 10px;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }

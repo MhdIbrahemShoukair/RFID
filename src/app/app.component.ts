@@ -16,7 +16,7 @@ import { Subject, filter, takeUntil } from 'rxjs';
     CommonModule,
     MsalModule,
     RouterOutlet,
-    RouterLink,
+    // RouterLink,
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
@@ -43,8 +43,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private translate: TranslateService
   ) {
     this.translate.addLangs(['ar', 'en']);
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+    let lang = localStorage.getItem('lang')
+    if (!lang) {
+      lang = 'en';
+    }
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
   }
 
   ngOnInit(): void {

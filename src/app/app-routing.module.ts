@@ -8,16 +8,15 @@ import { DeviceDetailsComponent } from './device-managment/device-details/device
 import { DeviceRFIDDataComponent } from './device-managment/device-rfiddata/device-rfiddata.component';
 import { AuthGuard } from './auth/auth.guard';
 import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
-import { MsalGuard } from '@azure/msal-angular';
-import { InventoryListComponent } from './inventory-management/inventory-list/inventory-list.component';
 import { InventoryItemDetailsComponent } from './inventory-management/inventory-item-details/inventory-item-details.component';
+import { InventoryListComponent } from './inventory-management/inventory-list/inventory-list.component';
 
 export const routes: Routes = [
-    // { path: 'login', component: LoginComponent, data: { name: 'login', order: 10 } },
+    { path: 'login', component: LoginComponent, data: { name: 'login', order: 10 } },
     {
         path: 'dashboard', loadComponent: () => import('./dashboard/dashboard.component').then((m) => m.DashboardComponent),
         data: { name: 'dashboard', order: 1 },
-        // canActivate: [MsalGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'devices', component: DeviceManagmentComponent, data: { name: 'devices', order: 2 },
@@ -44,22 +43,20 @@ export const routes: Routes = [
         path: 'Inventory', component: InventoryManagementComponent, data: { name: 'inventory', order: 3 },
         children: [
             {
-                path: '',
-                redirectTo: 'list',
-                pathMatch: 'full'
+                path:'', redirectTo:'item-list', pathMatch:'full'
             },
             {
-                path: 'list',
+                path: 'item-list',
                 component: InventoryListComponent
             },
             {
-                path: 'details/:id',
+                path: 'item-details/:id',
                 component: InventoryItemDetailsComponent
             },
-            {
-                path: 'details/:id/RFID',
-                component: InventoryItemDetailsComponent
-            },
+            // {
+            //     path: 'details/:id/RFID',
+            //     component: DeviceRFIDDataComponent
+            // },
             // {
             //     path: '', redirectTo 'list', pathMatch: 'full'
             // }
@@ -69,3 +66,4 @@ export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },  // Wildcard route for a 404 page
 ];
+export class AppRoutingModule { }

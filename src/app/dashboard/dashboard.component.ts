@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
-export interface PeriodicElement {
+export interface ErrorNotifications {
   id: string;
   type: string;
   status: string;
@@ -10,7 +11,7 @@ export interface PeriodicElement {
   action?: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: ErrorNotifications[] = [
   { id: 'R-21332', type: 'Reader', status: 'Offline', errorMsg: 'Failed to get Puls Info' },
   { id: 'AN-3241', type: 'Antenna', status: 'Offline', errorMsg: 'No response from Antenna' },
   { id: 'T-21332', type: 'RFID Tag', status: 'Outside designated zone', errorMsg: 'Tag showing outside designated zone' },
@@ -20,12 +21,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatTableModule],
+  imports: [MatTableModule, TranslateModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'type', 'status', 'errorMsg', 'action'];
   dataSource = ELEMENT_DATA;
+  lang: any;
 
+  constructor(private translate: TranslateService) {
+    this.lang = localStorage.getItem('lang')
+  }
+
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((lng) => {
+      this.lang = lng.lang;
+    });
+  }
 }

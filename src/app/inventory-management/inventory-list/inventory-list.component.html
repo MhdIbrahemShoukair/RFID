@@ -1,0 +1,57 @@
+<div [class.ar]="lang =='ar'">
+    <p class="sub-title">{{ 'inventory-management.list.title' | translate}}</p>
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.id' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- SKU Column -->
+            <ng-container matColumnDef="sku">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.sku' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.sku}} </td>
+            </ng-container>
+
+            <!-- Reference # Column -->
+            <ng-container matColumnDef="reference">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.reference' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.name' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Tag Column -->
+            <ng-container matColumnDef="tagId">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.tagId' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.tagId}} </td>
+            </ng-container>
+
+            <!-- Type Column -->
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.type' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+
+            <!-- action Column -->
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.quick-action' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> <a
+                        [routerLink]="'../details/'+element.id">{{'inventory-management.list.details' | translate}}</a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

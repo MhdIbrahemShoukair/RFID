@@ -8,15 +8,32 @@ ul {
     justify-content: flex-start;
     align-items: center;
 
+    display: inline-block;
+    width: 100%;
+
+
+    li {
+        float: left;
+        padding: 0 10px;
+
+        &.profile {
+            float: right;
+        }
+    }
+
     &.ar {
         direction: rtl;
+
+        li {
+            float: right;
+
+            &.profile {
+                float: left;
+            }
+        }
     }
 }
 
-li {
-    float: left;
-    padding: 0 10px;
-}
 
 li a {
     display: block;
@@ -24,8 +41,10 @@ li a {
     text-align: center;
     padding: 8px;
     text-decoration: none;
+    cursor: pointer;
 
-    &.active {
+    &.active,
+    &:hover {
         color: #8A1538;
     }
 }
