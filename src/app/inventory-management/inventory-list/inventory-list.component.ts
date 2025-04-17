@@ -16,7 +16,6 @@ export class InventoryListComponent {
   dataSource: InventoryItem[] = [];
   lang: any;
 
-
   constructor(private translate: TranslateService, private inventoryService: InventoryService) {
     this.lang = localStorage.getItem('lang')
   }
@@ -32,6 +31,7 @@ export class InventoryListComponent {
   private loadData() {
     this.inventoryService.getInventoryItems().subscribe((items) => {
       this.dataSource = items;
+      console.log(this.dataSource);
     })
   }
   private loadWarehouseData() {
