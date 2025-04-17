@@ -1,0 +1,21 @@
+<nav>
+    <ul [class.ar]="lang =='ar'">
+        <li class="icon">
+            <a [routerLink]="'dashboard'">
+                <img src="./assets/icons/mec_logo.png" />
+            </a>
+        </li>
+        <li *ngFor="let route of routes">
+            <a [routerLink]="[route.path]" [routerLinkActive]="['active']">{{ 'nav.'+route.name | translate}}</a>
+        </li>
+        <li>
+            <a *ngIf="lang=='ar'" (click)="useLanguage('en')">English</a>
+            <a *ngIf="lang=='en'" (click)="useLanguage('ar')">عربي</a>
+        </li>
+
+        <li class="profile">
+            profile
+        </li>
+    </ul>
+
+</nav>

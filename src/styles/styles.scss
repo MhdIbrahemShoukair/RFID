@@ -1,0 +1,36 @@
+@use "variables";
+@use '@angular/material' as mat;
+@use "typography";
+@use "mixin";
+
+html {
+    @include mat.theme((color: mat.$violet-palette,
+            typography: (plain-family: Cairo,
+                brand-family: Cairo,
+                bold-weight: 900,
+                medium-weight: 500,
+                regular-weight: 300,
+            ),
+            density: 0,
+        ));
+}
+
+
+
+
+/* advanced-responsive-layout.component.css */
+.advanced-responsive-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 70px;
+}
+
+.item {
+    // margin: 10px;
+    // padding: 20px;
+    // border: 1px solid #ccc;
+    // border-radius: 10px;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}

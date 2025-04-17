@@ -1,0 +1,15 @@
+@import url("../../styles/overrides.scss");
+
+a {
+    color: #626C83;
+    text-decoration: none;
+
+    &.active,
+    &:hover {
+        color: #8A1538;
+    }
+}
+
+.mb-8 {
+    margin-bottom: -8px;
+}

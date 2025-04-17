@@ -1,0 +1,37 @@
+{
+    "table": {
+        "TITLE": "مرحبا",
+        "DESCRIPTION": "Here comes some text..."
+    },
+    "nav": {
+        "dashboard": "لوحة التحكم",
+        "devices": "إدارة الأجهزة",
+        "inventory": "إدارة المخزون",
+        "login": "Loلبلgin"
+    },
+    "dashboard": {
+        "dashboard": "لوحة التحكم",
+        "error": "إشعارات الخطأ",
+        "table": {
+            "id": "معرف الجهاز",
+            "type": "النوع",
+            "status": "الحالة",
+            "error-message": "رسالة خطأ",
+            "quick-action": "إجراء سريع"
+        }
+    },
+    "inventory-management": {
+        "home": "إدارة المخزون",
+        "details": "تفاصيل العنصر",
+        "list": {
+            "title": "جميع العناصر",
+            "id": "ID",
+            "sku": "SKU",
+            "reference": "رقم المرجع",
+            "name": "الاسم",
+            "tagId": "معرف العلامة",
+            "quick-action": "إجراء سريع",
+            "details": "تفاصيل"
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "table": {
+        "TITLE": "Hello World!",
+        "DESCRIPTION": "Here comes some text..."
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "devices": "Device Management",
+        "inventory": "Inventory Management",
+        "login": "Login"
+    },
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "error": "Error Notifications",
+        "table": {
+            "id": "Id",
+            "type": "Type",
+            "status": "Status",
+            "error-message": "Error Message",
+            "quick-action": "Quick Action"
+        }
+    },
+    "inventory-management": {
+        "home": "Inventory Management",
+        "details":"Item Details",
+        "list": {
+            "title": "All Items",
+            "id": "ID",
+            "sku": "SKU",
+            "reference": "Reference #",
+            "name": "Name",
+            "tagId": "Tag ID",
+            "quick-action": "Quick Action",
+            "details": "Details"
+        }
+    }
+}

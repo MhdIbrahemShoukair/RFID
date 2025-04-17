@@ -1,0 +1,11 @@
+<div [class.ar]="lang =='ar'">
+    <p class="title"><a [routerLink]="'/Inventory'">{{ 'inventory-management.home' | translate}}</a>
+        <ng-container *ngIf="inDetails">
+            <mat-icon class="mb-8" *ngIf="lang !='ar'">keyboard_arrow_right</mat-icon>
+            <mat-icon class="mb-8" *ngIf="lang =='ar'">keyboard_arrow_left</mat-icon>
+            {{ 'inventory-management.details' | translate}}
+        </ng-container>
+    </p>
+
+</div>
+<router-outlet></router-outlet>

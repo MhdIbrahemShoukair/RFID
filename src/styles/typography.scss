@@ -1,0 +1,136 @@
+// Imports
+@use "variables";
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+// Base Styles
+body {
+    font-family: variables.$font-family-base; // Default font for body text
+    font-size: 16px; // Base font size
+    line-height: 1.6; // Line height for readability
+    color: #333; // Default text color
+    margin: 0;
+    padding: 0;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: variables.$font-family-base;
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+h1 {
+    font-size: 2.5em; // Font size for H1
+    font-weight: 700; // Bold
+}
+
+h2 {
+    font-size: 2em; // Font size for H2
+    font-weight: 700; // Bold
+}
+
+h3 {
+    font-size: 1.75em; // Font size for H3
+    font-weight: 600; // Semi-bold
+}
+
+h4 {
+    font-size: 1.5em; // Font size for H4
+    font-weight: 600; // Semi-bold
+}
+
+h5 {
+    font-size: 1.25em; // Font size for H5
+    font-weight: 400; // Normal
+}
+
+h6 {
+    font-size: 1em; // Font size for H6
+    font-weight: 400; // Normal
+}
+
+// Paragraphs
+p {
+    font-size: 1em; // Font size for paragraphs
+    margin: 0.5em 0; // Margin for spacing
+    font-family: variables.$font-family-base;
+}
+
+// Links
+a {
+    color: #007BFF; // Link color
+    text-decoration: none; // Remove underline
+    font-family: variables.$font-family-base;
+
+    &:hover {
+        text-decoration: underline; // Underline on hover
+    }
+}
+
+// Responsive Typography
+$breakpoint-lg: 1200px;
+$breakpoint-md: 992px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 576px;
+
+@media (max-width: $breakpoint-lg) {
+    body {
+        font-size: 15px; // Slightly smaller font size for larger screens
+    }
+
+    h1 {
+        font-size: 2.3em; // Adjust H1 size
+    }
+
+    h2 {
+        font-size: 1.8em; // Adjust H2 size
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    body {
+        font-size: 14px; // Smaller font size for medium screens
+    }
+
+    h1 {
+        font-size: 2.1em; // Adjust H1 size
+    }
+
+    h2 {
+        font-size: 1.7em; // Adjust H2 size
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    body {
+        font-size: 13px; // Smaller font size for small screens
+    }
+
+    h1 {
+        font-size: 1.9em; // Adjust H1 size
+    }
+
+    h2 {
+        font-size: 1.5em; // Adjust H2 size
+    }
+}
+
+@media (max-width: $breakpoint-xs) {
+    body {
+        font-size: 12px; // Smallest font size for extra small screens
+    }
+
+    h1 {
+        font-size: 1.7em; // Adjust H1 size
+    }
+
+    h2 {
+        font-size: 1.4em; // Adjust H2 size
+    }
+}
