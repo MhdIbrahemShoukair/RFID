@@ -22,12 +22,16 @@
     },
     "inventory-management": {
         "home": "Inventory Management",
-        "details":"Item Details",
+        "details": {
+            "title": "Item Details"
+        },
         "list": {
             "title": "All Items",
-            "id": "ID",
+            "id": "CODE",
             "sku": "SKU",
+            "hsn": "HSN",
             "reference": "Reference #",
+            "category": "Category",
             "name": "Name",
             "tagId": "Tag ID",
             "quick-action": "Quick Action",

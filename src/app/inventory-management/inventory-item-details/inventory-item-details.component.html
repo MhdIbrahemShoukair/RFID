@@ -1,1 +1,75 @@
-<p>inventory-item-details works!</p>
+<div [class.ar]="lang =='ar'">
+    <p class="sub-title">{{ 'inventory-management.details.title' | translate}}</p>
+    <div class="details-container">
+        <div class="details-header">
+            <div class="details-header-img">
+
+            </div>
+            <div class="details-header-info">
+                <div class="header-info">
+                    <p class="item-title">{{itemDetails.ITEM_DESCRIPTION}}</p>
+                    <!-- <div class="actions-container">
+                        <button class="secondary"></button>
+                        <button class="primary"></button>
+                    </div> -->
+                </div>
+                <div class="info-pair-row">
+                    <div class="info-pair">
+                        <span class="label">ID</span>
+                        <span class="data">{{itemDetails.ITEM_CODE}}</span>
+                    </div>
+                    <div class="info-pair">
+                        <span class="label">Reference #</span>
+                        <span class="data">{{itemDetails.HSN_CODE}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-body">
+            <div class="info-pair-row">
+                <div class="info-pair">
+                    <span class="label">RFID Tag</span>
+                    <span class="data"></span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">SKU</span>
+                    <span class="data"></span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Classification</span>
+                    <span class="data">{{itemDetails.ITEM_CLASSIFICATION}}</span>
+                </div>
+            </div>
+            <div class="info-pair-row">
+                <div class="info-pair">
+                    <span class="label">Weight</span>
+                    <span class="data">{{itemDetails.ITEM_WEIGHT}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Unit</span>
+                    <span class="data">{{itemDetails.UNIT_OF_MEASUREMENT}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Volume</span>
+                    <span class="data">{{itemDetails.ITEM_VOLUME}}</span>
+                </div>
+            </div>
+            <div class="info-pair-row">
+
+                <div class="info-pair">
+                    <span class="label">Category</span>
+                    <span class="data">{{itemDetails.ITEM_CATEGORY}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Zone</span>
+                    <span class="data"></span>
+                </div>
+                <div class="info-pair">
+                    <span class="label"></span>
+                    <span class="data"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

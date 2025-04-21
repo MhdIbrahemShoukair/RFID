@@ -22,11 +22,15 @@
     },
     "inventory-management": {
         "home": "إدارة المخزون",
-        "details": "تفاصيل العنصر",
+        "details": {
+            "title": "تفاصيل العنصر"
+        },
         "list": {
             "title": "جميع العناصر",
-            "id": "ID",
+            "id": "الرمز",
             "sku": "SKU",
+            "hsn": "HSN",
+            "category":"الصنف",
             "reference": "رقم المرجع",
             "name": "الاسم",
             "tagId": "معرف العلامة",

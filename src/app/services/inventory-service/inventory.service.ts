@@ -36,6 +36,15 @@ export class InventoryService {
         return subject.asObservable();
     }
 
+    getInventoryItemByCode(itemCode: string): Observable<InventoryItem> {
+        let items: InventoryItem[];
+        var subject = new Subject<InventoryItem>();
+        this.http.get<any>(`${this.BASE_URL}GetItemDetails?P_ITEM=${itemCode}`, this.httpOptions).subscribe((res) => {
+            subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM[0]);
+        });
+        return subject.asObservable();
+    }
+
     getWarehouseDetails(): Observable<Warehouse[]> {
         let items: Warehouse[];
         var subject = new Subject<Warehouse[]>();

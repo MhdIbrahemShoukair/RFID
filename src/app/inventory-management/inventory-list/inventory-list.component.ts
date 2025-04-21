@@ -3,7 +3,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { InventoryService } from '../../services/inventory-service/inventory.service';
-import { InventoryItem } from '../../services/inventory-service/inventory';
+import { InventoryItem, MOCK_INVENTORY } from '../../services/inventory-service/inventory';
 
 @Component({
   selector: 'app-inventory-list',
@@ -12,7 +12,7 @@ import { InventoryItem } from '../../services/inventory-service/inventory';
   styleUrl: './inventory-list.component.scss'
 })
 export class InventoryListComponent {
-  displayedColumns: string[] = ['id', 'sku', 'reference', 'name', 'tagId', 'action'];
+  displayedColumns: string[] = ['id', 'hsn', 'reference', 'name', 'tagId', 'category', 'action'];
   dataSource: InventoryItem[] = [];
   lang: any;
 
@@ -29,10 +29,11 @@ export class InventoryListComponent {
   }
 
   private loadData() {
-    this.inventoryService.getInventoryItems().subscribe((items) => {
-      this.dataSource = items;
-      console.log(this.dataSource);
-    })
+    // this.inventoryService.getInventoryItems().subscribe((items) => {
+    //   this.dataSource = items;
+    //   console.log(this.dataSource);
+    // })
+    this.dataSource = MOCK_INVENTORY.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM as any;
   }
   private loadWarehouseData() {
     this.inventoryService.getWarehouseDetails().subscribe((items) => {
