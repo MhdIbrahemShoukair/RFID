@@ -4,7 +4,7 @@
 @use "mixin";
 
 html {
-    @include mat.theme((color: mat.$violet-palette,
+    @include mat.theme((color: mat.$rose-palette,
             typography: (plain-family: Cairo,
                 brand-family: Cairo,
                 bold-weight: 900,

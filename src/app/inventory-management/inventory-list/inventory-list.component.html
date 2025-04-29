@@ -1,7 +1,60 @@
 <div [class.ar]="lang =='ar'">
     <p class="sub-title">{{ 'inventory-management.list.title' | translate}}</p>
+    <div class="filters-container">
+        <div class="list-container">
+            <div class="filter">
+                <mat-form-field appearance="fill" class="mySelectForm">
+                    <mat-label>Item Code:</mat-label>
+                    <mat-select multiple [(ngModel)]="selectedCode" panelClass="select-class"
+                        (selectionChange)="updateFilteredResults()">
+                        <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctCodes "
+                            [value]="val">{{val}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <a *ngIf="!!selectedCode && selectedCode.length > 0" class="clear-sel"
+                    (click)="clearFilter('ITEM_CODE')">clear selection</a>
+            </div>
+            <div class="filter">
+                <mat-form-field appearance="fill" class="mySelectForm">
+                    <mat-label>HSN Code</mat-label>
+                    <mat-select multiple [(ngModel)]="selectedHSN" panelClass="select-class"
+                        (selectionChange)="updateFilteredResults()">
+                        <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctHSNs "
+                            [value]="val">{{val}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <a *ngIf="!!selectedHSN && selectedHSN.length > 0" class="clear-sel"
+                    (click)="clearFilter('HSN_CODE')">clear selection</a>
+            </div>
+            <div class="filter">
+                <mat-form-field appearance="fill" class="mySelectForm">
+                    <mat-label>Category:</mat-label>
+                    <mat-select multiple [(ngModel)]="selectedCategorie" panelClass="select-class"
+                        (selectionChange)="updateFilteredResults()">
+                        <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctCategories "
+                            [value]="val">{{val}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <a *ngIf="!!selectedCategorie && selectedCategorie.length > 0" class="clear-sel"
+                    (click)="clearFilter('ITEM_CATEGORY')">clear selection</a>
+            </div>
+            <div class="filter">
+                <mat-form-field appearance="fill" class="mySelectForm">
+                    <mat-label>Classification:</mat-label>
+                    <mat-select multiple [(ngModel)]="selectedClassification" panelClass="select-class"
+                        (selectionChange)="updateFilteredResults()">
+                        <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctClassifications "
+                            [value]="val">{{val}}</mat-option>
+                    </mat-select>
+                    <a *ngIf="!!selectedClassification && selectedClassification.length > 0" class="clear-sel"
+                        (click)="clearFilter('ITEM_CLASSIFICATION')">clear selection</a>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
     <div class="table-container">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="filteredResults" class="elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
             /*
@@ -69,7 +122,8 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.quick-action' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> <a
-                        [routerLink]="'../details/'+element.ITEM_CODE">{{'inventory-management.list.details' | translate}}</a>
+                        [routerLink]="'../details/'+element.ITEM_CODE">{{'inventory-management.list.details' |
+                        translate}}</a>
                 </td>
             </ng-container>
 
