@@ -18,9 +18,18 @@ export interface Warehouse {
     ZONE_: string,
     STREET?: string,
     BULIDING: string,
-    POSTAL_CODE: number
+    POSTAL_CODE: string
 };
 
+export interface StockItem {
+    ORGANIZATION_CODE: string,
+    ORGANIZATION_NAME: string,
+    ITEM_CODE: string,
+    SERIAL_NUMBER: string,
+    LOT_NUMBER: string,
+    EXPIRATION_DATE: Date,
+    ONHAND_QUANTITY: number
+}
 
 export const MOCK_INVENTORY = {
     "OutputParameters": {

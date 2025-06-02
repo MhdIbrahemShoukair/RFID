@@ -23,8 +23,7 @@
     "inventory-management": {
         "home": "إدارة المخزون",
         "details": {
-            "title": "تفاصيل العنصر",
-            "warehouses": "تفاصيل المخزن"
+            "title": "تفاصيل العنصر"
         },
         "list": {
             "title": "جميع العناصر",
@@ -35,15 +34,6 @@
             "reference": "رقم المرجع",
             "name": "الاسم",
             "tagId": "معرف العلامة",
-            "quick-action": "إجراء سريع",
-            "details": "تفاصيل"
-        },
-        "warehouses": {
-            "title": "المخازن",
-            "id": "الرمز",
-            "address":"العنوان",
-            "postal": "رقم المرجع",
-            "name": "الاسم",
             "quick-action": "إجراء سريع",
             "details": "تفاصيل"
         }

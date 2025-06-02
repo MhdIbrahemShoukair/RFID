@@ -1,0 +1,165 @@
+<div [class.ar]="lang =='ar'">
+    <p class="sub-title">{{ 'inventory-management.details.warehouses' | translate}}</p>
+    <div class="details-container">
+        <div class="details-header">
+            <!-- <div class="details-header-img">
+
+            </div> -->
+            <div class="details-header-info">
+                <div class="header-info">
+                    <p class="item-title">{{itemDetails.WAREHOUSE_NAME}}</p>
+                    <!-- <div class="actions-container">
+                        <button class="secondary"></button>
+                        <button class="primary"></button>
+                    </div> -->
+                </div>
+                <!-- <div class="info-pair-row">
+                    <div class="info-pair">
+                        <span class="label">ID</span>
+                        <span class="data">{{itemDetails.WAREHOUSE_CODE}}</span>
+                    </div>
+                    <div class="info-pair">
+                        <span class="label">City</span>
+                        <span class="data">{{itemDetails.CITY}}</span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="details-body">
+            <div class="info-pair-row">
+                <div class="info-pair">
+                    <span class="label">Code</span>
+                    <span class="data">{{itemDetails.WAREHOUSE_CODE}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Country</span>
+                    <span class="data">{{itemDetails.COUNTRY}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">City</span>
+                    <span class="data">{{itemDetails.CITY}}</span>
+                </div>
+            </div>
+            <div class="info-pair-row">
+                <div class="info-pair">
+                    <span class="label">Location</span>
+                    <span class="data">{{itemDetails.LOCATION}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Street</span>
+                    <span class="data">{{itemDetails.STREET}}</span>
+                </div>
+                <div class="info-pair">
+                    <span class="label">Zone</span>
+                    <span class="data">{{itemDetails.ZONE_}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="details-body">
+            <p class="item-title">{{'inventory-management.details.stock' | translate}}</p>
+            <div class="filters-container">
+                <div class="list-container">
+                    <div class="filter">
+                        <mat-form-field appearance="fill" class="mySelectForm">
+                            <mat-label>Item Code:</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedCode" panelClass="select-class"
+                                (selectionChange)="updateFilteredResults()">
+                                <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctCodes "
+                                    [value]="val">{{val}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <a *ngIf="!!selectedCode && selectedCode.length > 0" class="clear-sel"
+                            (click)="clearFilter('ITEM_CODE')">clear selection</a>
+                    </div>
+                    <div class="filter">
+                        <mat-form-field appearance="fill" class="mySelectForm">
+                            <mat-label>Serial Code</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedSerial" panelClass="select-class"
+                                (selectionChange)="updateFilteredResults()">
+                                <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctSerials "
+                                    [value]="val">{{val}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <a *ngIf="!!selectedSerial && selectedSerial.length > 0" class="clear-sel"
+                            (click)="clearFilter('SERIAL_NUMBER')">clear selection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container" style="border: 0px solid !important;box-shadow: none;width: 100%;">
+                <ng-container>
+                    <ng-container *ngFor="let group of codes">
+                        <div class="details-body" style="margin-bottom: 5px;gap:0">
+                            <div class="info-pair-row">
+                                <div class="info-pair">
+                                    <span class="label">Code</span>
+                                    <span class="data">{{group.code}}</span>
+                                </div>
+                            </div>
+                            <ng-container *ngFor="let item of group.lots">
+                                <div class="info-pair-row">
+                                    <div class="info-pair">
+                                        <span class="label">Lot</span>
+                                        <span class="data">{{item.name}}</span>
+                                    </div>
+                                    <div class="info-pair">
+                                        <span class="label">Expiration date</span>
+                                        <span class="data">{{item.expDate | date}}</span>
+                                    </div>
+                                    <div class="info-pair">
+                                        <span class="label">Stock</span>
+                                        <span class="data">{{item.stock}}</span>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+            <div class="table-container">
+                <ng-container>
+                    <table mat-table [dataSource]="filteredResultsDS" class="elevation-z8" matSort>
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.id' | translate}} </th>
+                            <td mat-cell *matCellDef="let element"> {{element.ITEM_CODE}} </td>
+                        </ng-container>
+
+                        <!-- Serial Column -->
+                        <ng-container matColumnDef="serial">
+                            <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.serial' | translate}}
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.SERIAL_NUMBER}} </td>
+                        </ng-container>
+
+                        <!-- Lot Column -->
+                        <ng-container matColumnDef="lot">
+                            <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.lot' | translate}} </th>
+                            <td mat-cell *matCellDef="let element"> {{element.LOT_NUMBER}} </td>
+                        </ng-container>
+
+                        <!-- expiration_date Column -->
+                        <ng-container matColumnDef="expiration_date">
+                            <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.expiration_date' |
+                                translate}} </th>
+                            <td mat-cell *matCellDef="let element"> {{element.EXPIRATION_DATE| date}} </td>
+                        </ng-container>
+
+                        <!-- Quantity # Column -->
+                        <ng-container matColumnDef="quantity">
+                            <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.quantity' | translate}}
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.ONHAND_QUANTITY }} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>

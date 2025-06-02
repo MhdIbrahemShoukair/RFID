@@ -1,22 +1,21 @@
 <div [class.ar]="lang =='ar'">
     <div class="tabs-links">
-        <p class="sub-title active">
+        <p class="sub-title">
             <a [routerLink]="'/Inventory/list'">
                 {{ 'inventory-management.list.title' | translate}}
             </a>
         </p>
-        <p class="sub-title">
+        <p class="sub-title active">
             <a [routerLink]="'/Inventory/warehouses'">
                 {{ 'inventory-management.warehouses.title' | translate}}
             </a>
         </p>
     </div>
-    <!-- <p class="sub-title">{{ 'inventory-management.list.title' | translate}}</p> -->
     <div class="filters-container">
         <div class="list-container">
             <div class="filter">
                 <mat-form-field appearance="fill" class="mySelectForm">
-                    <mat-label>Item Code:</mat-label>
+                    <mat-label>Warehouse Code:</mat-label>
                     <mat-select multiple [(ngModel)]="selectedCode" panelClass="select-class"
                         (selectionChange)="updateFilteredResults()">
                         <mat-option [style]="selectOptionStyle" *ngFor="let val of distinctCodes "
@@ -26,7 +25,7 @@
                 <a *ngIf="!!selectedCode && selectedCode.length > 0" class="clear-sel"
                     (click)="clearFilter('ITEM_CODE')">clear selection</a>
             </div>
-            <div class="filter">
+            <!-- <div class="filter">
                 <mat-form-field appearance="fill" class="mySelectForm">
                     <mat-label>HSN Code</mat-label>
                     <mat-select multiple [(ngModel)]="selectedHSN" panelClass="select-class"
@@ -61,80 +60,45 @@
                     <a *ngIf="!!selectedClassification && selectedClassification.length > 0" class="clear-sel"
                         (click)="clearFilter('ITEM_CLASSIFICATION')">clear selection</a>
                 </mat-form-field>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="table-container">
 
         <table mat-table [dataSource]="filteredResults" class="elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-            /*
-  ITEM_CODE: string,
-    HSN_CODE?: string,
-    BAR_CODE?: string,
-    ITEM_DESCRIPTION: string,
-    UNIT_OF_MEASUREMENT: string,
-    ITEM_WEIGHT?: string,
-    ITEM_VOLUME?: string,
-    ITEM_CATEGORY: string,
-    ITEM_CLASSIFICATION: string
-    */
-              The actual rendered columns are set as a property on the row definition" -->
-
-            <!-- Position Column -->
+            <!-- Code Column -->
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.id' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.ITEM_CODE}} </td>
-            </ng-container>
-
-            <!-- HSN Column -->
-            <ng-container matColumnDef="hsn">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.hsn' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.HSN_CODE}} </td>
-            </ng-container>
-
-            <!-- BarCode Column -->
-            <ng-container matColumnDef="barcode">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.barcode' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.BAR_CODE}} </td>
-            </ng-container>
-
-            <!-- SKU Column -->
-            <ng-container matColumnDef="sku">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.sku' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.sku}} </td>
-            </ng-container>
-
-            <!-- Reference # Column -->
-            <ng-container matColumnDef="reference">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.reference' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.warehouses.id' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.WAREHOUSE_CODE}} </td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.name' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.ITEM_DESCRIPTION}} </td>
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.warehouses.name' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.WAREHOUSE_NAME}} </td>
             </ng-container>
 
-            <!-- Tag Column -->
-            <ng-container matColumnDef="tagId">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.tagId' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.BAR_CODE}} </td>
+            <!-- Address Column -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.warehouses.address' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.COUNTRY}} {{element.CITY}} {{element.STREET}} -
+                    {{element.LOCATION}} </td>
             </ng-container>
 
-            <!-- Type Column -->
-            <ng-container matColumnDef="category">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.category' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.ITEM_CATEGORY}} </td>
+            <!-- POSTAL Column -->
+            <ng-container matColumnDef="postal">
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.warehouses.postal' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.POSTAL_CODE}}</td>
             </ng-container>
 
             <!-- action Column -->
             <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.list.quick-action' | translate}} </th>
+                <th mat-header-cell *matHeaderCellDef> {{'inventory-management.warehouses.quick-action' | translate}}
+                </th>
                 <td mat-cell *matCellDef="let element"> <a
-                        [routerLink]="'../details/'+element.ITEM_CODE">{{'inventory-management.list.details' |
+                        [routerLink]="'../warehouses/details/'+element.WAREHOUSE_CODE">{{'inventory-management.warehouses.details'
+                        |
                         translate}}</a>
                 </td>
             </ng-container>

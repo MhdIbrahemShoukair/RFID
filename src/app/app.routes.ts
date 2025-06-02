@@ -7,10 +7,14 @@ import { DeviceListComponent } from './device-managment/device-list/device-list.
 import { DeviceDetailsComponent } from './device-managment/device-details/device-details.component';
 import { DeviceRFIDDataComponent } from './device-managment/device-rfiddata/device-rfiddata.component';
 import { AuthGuard } from './services/auth-service/auth.guard';
-import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
 import { MsalGuard } from '@azure/msal-angular';
-import { InventoryListComponent } from './inventory-management/inventory-list/inventory-list.component';
-import { InventoryItemDetailsComponent } from './inventory-management/inventory-item-details/inventory-item-details.component';
+import {
+    InventoryManagementComponent,
+    InventoryListComponent,
+    InventoryItemDetailsComponent,
+    WarehouseListComponent,
+    WarehouseDetailsComponent
+} from './inventory-management/index';
 
 export const routes: Routes = [
     // { path: 'login', component: LoginComponent, data: { name: 'login', order: 10 } },
@@ -53,6 +57,14 @@ export const routes: Routes = [
                 component: InventoryListComponent
             },
             {
+                path: 'warehouses',
+                component: WarehouseListComponent
+            },
+            {
+                path: 'warehouses/details/:id',
+                component: WarehouseDetailsComponent
+            },
+            {
                 path: 'details/:id',
                 component: InventoryItemDetailsComponent
             },
@@ -64,7 +76,6 @@ export const routes: Routes = [
             //     path: '', redirectTo 'list', pathMatch: 'full'
             // }
         ]
-
     },
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },  // Wildcard route for a 404 page

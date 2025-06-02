@@ -1,3 +1,5 @@
+// @use "variables";
+
 .mat-mdc-header-row,
 .mat-mdc-header-cell {
     color: var(--color-azure-45, #626C83);
@@ -211,4 +213,32 @@ p.sub-title {
     /* Shadows/xs */
     box-shadow: 0px 1px 2px 0px rgba(14, 18, 27, 0.04);
 
+}
+
+
+.sub-title {
+    a {
+        text-decoration: none;
+        color: #333;
+        padding: 0 5px;
+    }
+
+    &.active {
+        border-bottom: 1px solid #8A1538 !important;
+
+        a {
+            color: #8A1538;
+        }
+    }
+}
+
+.tabs-links {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid #E1E4EA !important;
+    margin-bottom: 18px;
+
+    p {
+        margin: 0;
+    }
 }

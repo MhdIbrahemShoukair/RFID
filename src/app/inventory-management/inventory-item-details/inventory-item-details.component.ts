@@ -39,11 +39,11 @@ export class InventoryItemDetailsComponent {
   }
 
   private loadData() {
-    // this.inventoryService.getInventoryItems().subscribe((items) => {
-    //   this.dataSource = items;
-    //   console.log(this.dataSource);
-    // })
-    this.dataSource = MOCK_INVENTORY.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM as any;
-    this.itemDetails = this.dataSource.filter(i => i.ITEM_CODE === this.itemId)[0];
+    this.inventoryService.getInventoryItemByCode(this.itemId as string).subscribe((item) => {
+      this.itemDetails = item;
+      console.log(this.dataSource);
+    })
+    // this.dataSource = MOCK_INVENTORY.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM as any;
+    // this.itemDetails = this.dataSource.filter(i => i.ITEM_CODE === this.itemId)[0];
   }
 }

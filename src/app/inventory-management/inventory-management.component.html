@@ -1,9 +1,16 @@
 <div [class.ar]="lang =='ar'">
     <p class="title"><a [routerLink]="'/Inventory'">{{ 'inventory-management.home' | translate}}</a>
+        <mat-icon class="mb-8" *ngIf="lang !='ar'">keyboard_arrow_right</mat-icon>
+        <mat-icon class="mb-8" *ngIf="lang =='ar'">keyboard_arrow_left</mat-icon>
+        <a *ngIf="!!warehouses" [routerLink]="'/Inventory/warehouses'">{{ 'inventory-management.warehouses.title' |
+            translate}}</a>
+        <a *ngIf="!warehouses" [routerLink]="'/Inventory/list'">{{ 'inventory-management.list.title' | translate}}</a>
         <ng-container *ngIf="inDetails">
             <mat-icon class="mb-8" *ngIf="lang !='ar'">keyboard_arrow_right</mat-icon>
             <mat-icon class="mb-8" *ngIf="lang =='ar'">keyboard_arrow_left</mat-icon>
-            {{ 'inventory-management.details.title' | translate}}
+            {{ warehouses?('inventory-management.details.warehouses' | translate):('inventory-management.details.title'
+            |
+            translate)}}
         </ng-container>
     </p>
 

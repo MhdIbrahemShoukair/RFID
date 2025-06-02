@@ -41,17 +41,18 @@ export class InventoryListComponent {
       this.lang = lng.lang;
     });
     this.loadData();
-    this.loadWarehouseData();
   }
 
   private loadData() {
-    // this.inventoryService.getInventoryItems().subscribe((items) => {
-    //   this.dataSource = items;
-    //   console.log(this.dataSource);
-    // })
-    this.dataSource = MOCK_INVENTORY.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM as any;
-    this.getPreSelectedValues();
-    this.updateFilteredResults();
+    console.log('loadData');
+
+    this.inventoryService.getInventoryItems().subscribe((items) => {
+      console.log('loadData', items);
+      this.dataSource = items;
+      this.getPreSelectedValues();
+      this.updateFilteredResults();
+    });
+
   }
 
   public updateFilteredResults() {
@@ -95,10 +96,5 @@ export class InventoryListComponent {
     this.distinctCodes = Array.from(new Set(this.dataSource.map(item => item.ITEM_CODE)));
     this.distinctCategories = Array.from(new Set(this.dataSource.map(item => item.ITEM_CATEGORY)));
     this.distinctClassifications = Array.from(new Set(this.dataSource.map(item => item.ITEM_CLASSIFICATION)));
-  }
-  private loadWarehouseData() {
-    this.inventoryService.getWarehouseDetails().subscribe((items) => {
-      console.log(items);
-    })
   }
 }

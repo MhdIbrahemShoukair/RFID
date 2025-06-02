@@ -13,10 +13,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class InventoryManagementComponent {
   lang: any;
   inDetails: boolean = false;
+  warehouses: boolean = false;
 
   constructor(private translate: TranslateService, private router: Router) {
     this.lang = localStorage.getItem('lang')
     this.inDetails = this.router.url.includes('details');
+    this.warehouses = this.router.url.includes('warehouses');
   }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class InventoryManagementComponent {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.inDetails = this.router.url.includes('details');
+        this.warehouses = this.router.url.includes('warehouses');
       }
     });
   }

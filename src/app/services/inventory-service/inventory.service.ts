@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, Subject } from 'rxjs';
-import { InventoryItem, Warehouse } from './inventory';
+import { InventoryItem, StockItem, Warehouse } from './inventory';
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +28,6 @@ export class InventoryService {
     constructor(private http: HttpClient) { }
 
     getInventoryItems(): Observable<InventoryItem[]> {
-        let items: InventoryItem[];
         var subject = new Subject<InventoryItem[]>();
         this.http.get<any>(`${this.BASE_URL}GetItemDetails`, this.httpOptions).subscribe((res) => {
             subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM);
@@ -37,7 +36,6 @@ export class InventoryService {
     }
 
     getInventoryItemByCode(itemCode: string): Observable<InventoryItem> {
-        let items: InventoryItem[];
         var subject = new Subject<InventoryItem>();
         this.http.get<any>(`${this.BASE_URL}GetItemDetails?P_ITEM=${itemCode}`, this.httpOptions).subscribe((res) => {
             subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM[0]);
@@ -45,15 +43,26 @@ export class InventoryService {
         return subject.asObservable();
     }
 
+    getStockItemsByCode(warehouseCode: string): Observable<StockItem[]> {
+        var subject = new Subject<StockItem[]>();
+        this.http.get<any>(`${this.BASE_URL}GetStockDetails?P_ORGANIZATION_CODE=${warehouseCode}`, this.httpOptions).subscribe((res) => {
+            subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM);
+        });
+        return subject.asObservable();
+    }
+
     getWarehouseDetails(): Observable<Warehouse[]> {
-        let items: Warehouse[];
         var subject = new Subject<Warehouse[]>();
-        this.http.get<any[]>(`${this.BASE_URL}GetWarehouseDetails`, this.httpOptions).subscribe((res) => {
-            res.map(item => {
-                items = item?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM;
-                console.log(items);
-                subject.next(items);
-            });
+        this.http.get<any>(`${this.BASE_URL}GetWarehouseDetails`, this.httpOptions).subscribe((res) => {
+            subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM);
+        });
+        return subject.asObservable();
+    }
+
+    getWarehouseDetailsByCode(warehouseCode: string): Observable<Warehouse> {
+        var subject = new Subject<Warehouse>();
+        this.http.get<any>(`${this.BASE_URL}GetWarehouseDetails?P_ORGANIZATION_CODE=${warehouseCode}`, this.httpOptions).subscribe((res) => {
+            subject.next(res?.OutputParameters?.P_RECORD_STATUS?.P_RECORD_STATUS_ITEM[0]);
         });
         return subject.asObservable();
     }

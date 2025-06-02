@@ -23,7 +23,8 @@
     "inventory-management": {
         "home": "Inventory Management",
         "details": {
-            "title": "Item Details"
+            "title": "Item Details",
+            "warehouses": "Warehouse Details"
         },
         "list": {
             "title": "All Items",
@@ -34,6 +35,15 @@
             "category": "Category",
             "name": "Name",
             "tagId": "Tag ID",
+            "quick-action": "Quick Action",
+            "details": "Details"
+        },
+        "warehouses": {
+            "title": "Warehouses",
+            "id": "CODE",
+            "address":"Address",
+            "postal": "Postal",
+            "name": "Name",
             "quick-action": "Quick Action",
             "details": "Details"
         }
